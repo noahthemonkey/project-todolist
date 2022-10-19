@@ -2,6 +2,7 @@ import "./style.css"
 import {home} from './home.js'
 import {factory} from './domfactory.js'
 import {todoFactory} from './todoFactory.js'
+import { newTodo } from "./newTodo"
 
 const content = document.getElementById('content')
 const todoContainer = document.getElementById('todoContainer')
@@ -12,4 +13,7 @@ const forToday = todoFactory('Math','Practice for math test','read and do practi
 
 const nextDay = todoFactory('Moms birthday', 'Get a present', 'maybe get her a new bag and some flowers', '2044/07/22','very important')
 
+newTodo()
+
 console.log('yo')
+
