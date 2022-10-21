@@ -69,3 +69,9 @@ table {
 	font-weight: 100;
 	color: white;
 }
+
+input{
+	background: none;
+	border: none;
+	color: white;
+}
