@@ -8,7 +8,34 @@ export const todoFactory = (title, description, notes, dueDate, priority) => {
     const todoNotes = factory('p', {class: `notes`, contentEditable: 'true'}, `${notes}`)
     const tododueDate = factory('p', {class: `dueDate`, contentEditable: 'true'}, `${dueDate}`)
     const todoPriority = factory('p', {class: `priority`, contentEditable: 'true'}, `${priority}`)
+    const todoChecked = factory('input', {type: 'checkbox'})
+    const todoDelete = factory('button', {class: 'delete'})
 
-todoDiv.append(todoTitle, todoDescription, todoNotes, tododueDate, todoPriority)
+
+    todoDelete.addEventListener('click', deleteTodo)
+
+    function deleteTodo(){
+       this.parentNode.remove()
+    }
+
+    todoChecked.addEventListener('click', todoDone)
+    function todoDone() {
+    if (todoChecked.checked == true) {
+        for(let i = 0;i < 5; i++){
+            this.parentNode.children.item(i).style.textDecoration = 'line-through'
+            this.parentNode.children.item(i).style.color = 'gray'
+        }
+
+    }else{
+        
+        for(let i = 0;i < 5; i++){
+            this.parentNode.children.item(i).style.textDecoration = 'none'
+            this.parentNode.children.item(i).style.color = 'black'
+
+    }
+    this.parentNode.children.item(0).style.color = 'red'
+    }
+}
+todoDiv.append(todoTitle, todoDescription, todoNotes, tododueDate, todoPriority, todoChecked, todoDelete)
 todoContainer.appendChild(todoDiv)
 }

@@ -49,7 +49,7 @@ table {
 /* --------------------------------------------------------------------------------*/
 
 #content {
-    background-color: gray;
+    background-color: rgb(51, 49, 74);
     display: grid;
     justify-content: center;
 }
@@ -62,7 +62,7 @@ table {
 [id*="todoTitle"] {
     font-size: 18px;
 	font-weight: bold;
-	color: green;
+	color: rgb(255, 0, 0);
 }
 [id*="todoTitle"] > p{
     font-size: 16px;
