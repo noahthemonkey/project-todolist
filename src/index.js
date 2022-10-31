@@ -4,9 +4,11 @@ import {factory} from './domfactory.js'
 import {todoFactory} from './todoFactory.js'
 import { newTodo } from "./newTodo"
 import { showNotes } from "./showNotes.js"
+import { newList } from "./newList"
 
 const content = document.getElementById('content')
 const todoContainer = document.getElementById('todoContainer')
+
 
 
 
@@ -16,7 +18,7 @@ const nextDay = todoFactory('Moms birthday', 'Get a present', 'maybe get her a n
 
 
 newTodo()
-showNotes()
+newList()
 
 console.log('yo')
 

@@ -57,6 +57,9 @@ table {
     display: grid;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+    height: 500px;
+    
 }
 
 [id*="todoTitle"] {
@@ -71,11 +74,11 @@ table {
 }
 
 .collapsible {
+  border-radius: 10px;
   background-color: #777;
   color: white;
   cursor: pointer;
-  padding: 18px;
-  width: 100%;
+  width: 200px;
   border: none;
   text-align: left;
   outline: none;
@@ -95,4 +98,10 @@ input{
 	background: none;
 	border: none;
 	color: white;
+}
+
+#newList {
+  background-color: red;
+  height: 50px;
+  width: 50px;
 }

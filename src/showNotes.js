@@ -6,11 +6,9 @@ export const showNotes = () => {
 
     var i;
 
-for (i = 0; i < coll.length; i++) {
- 
-  coll[i].addEventListener("click", function() {
-
-    this.classList.toggle("active");
+    const onClick = function() {
+      console.log(this.id)
+      this.classList.toggle("active");
     
     var thisNotes = this.children.item(2);
     if (thisNotes.style.display === "block") {
@@ -18,8 +16,10 @@ for (i = 0; i < coll.length; i++) {
     } else {
       thisNotes.style.display = "block";
     }
-  });
-
-}
+  }
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].onclick = onClick
+    }
 
 }

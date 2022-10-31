@@ -41,7 +41,6 @@ export const newTodo = () => {
     function createTodo() {
         
         const creatingTodo = todoFactory(todoTitle.value, todoDescription.value, todoNotes.value, todoDue.value, todoPriority.value)
-        showNotes()
         
         for(let i = 0;i < 5; i++){
             inputContainer.children.item(i).value = ''
@@ -50,6 +49,6 @@ export const newTodo = () => {
         
 
     }
-    
+
 }
 
