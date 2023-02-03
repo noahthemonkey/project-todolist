@@ -51,6 +51,7 @@ table {
 #content {
     background-color: rgb(51, 49, 74);
     display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
 }
 #todoContainer {
@@ -60,6 +61,11 @@ table {
     gap: 20px;
     height: 500px;
     
+}
+#lists {
+  display: grid;
+  background-color: wheat;
+  height: 500px;
 }
 
 [id*="todoTitle"] {
@@ -104,4 +110,9 @@ input{
   background-color: red;
   height: 50px;
   width: 50px;
+}
+
+[class*="newList"] {
+  height: 100px;
+  background-color: wheat;
 }

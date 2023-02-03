@@ -25,14 +25,14 @@ export const todoFactory = (title, description, notes, dueDate, priority) => {
     todoChecked.addEventListener('click', todoDone)
     function todoDone() {
     if (todoChecked.checked == true) {
-        for(let i = 0;i < 5; i++){
+        for(var i = 0;i < 5; i++){
             this.parentNode.children.item(i).style.textDecoration = 'line-through'
             this.parentNode.children.item(i).style.color = 'gray'
         }
 
     }else{
         
-        for(let i = 0;i < 5; i++){
+        for(var i = 0;i < 5; i++){
             this.parentNode.children.item(i).style.textDecoration = 'none'
             this.parentNode.children.item(i).style.color = 'black'
 
