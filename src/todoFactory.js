@@ -2,7 +2,7 @@ import {factory} from './domfactory.js'
 import { showNotes } from './showNotes.js'
 
 export const todoFactory = (title, description, notes, dueDate, priority) => {
-    
+    const todoContainer = document.getElementById('todoContainer')
     // const todoStart = factory('div', {class:'todoStart'}, 'Todolist 1')
     const todoDiv = factory('div', {id: `${title}`, class: 'collapsible'})
     const todoTitle = factory('h1', {id: `todoTitle_${title}`, contentEditable: 'true'}, `${title}`)
