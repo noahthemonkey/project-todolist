@@ -1,14 +1,16 @@
-import { todos } from "./todoData.js";
+import { getTodos, todos, addTodo, getAllLists } from "./todoData.js";
 import { factory } from "./domfactory";
+import { todoFactory } from "./todoFactory"
+import { loadList, setSelect, } from "./loadList.js";
+import { updateList } from "./newTodo.js";
 
-export const list = (todos) => {
+export const listNav = (todos) => {
     const todoContainer = document.getElementById("todoContainer");
     const lists = document.getElementById("lists");
     const listsContainer = document.createElement("ul");
 
-    const allTodos = factory("li", {});
+    const allTodos = factory("li", {id: 'AllTodos'});
     allTodos.textContent = "All Current Todos";
-    addDeleteButton(allTodos);
 
     const listsMap = todos.reduce((listsMap, todo) => {
         if (!listsMap[todo.list]) {
@@ -24,16 +26,6 @@ export const list = (todos) => {
         addDeleteButton(listItem);
         listsContainer.append(listItem);
     });
-
-    const loadList = function () {
-        const selectedList = this.textContent;
-        todoContainer.innerHTML = "";
-        if (selectedList === "All Current Todos") {
-            // Get all the todos and display them
-        } else {
-            // Filter the todos to display only the ones that belong to the selected todolist
-        }
-    };
 
     allTodos.onclick = loadList;
     const listItems = Array.from(listsContainer.querySelectorAll("li"));
@@ -59,6 +51,7 @@ export const list = (todos) => {
     lists.append(listsContainer, addListForm, listsContainer);
 
     submitBtn.addEventListener("click", event => {
+
         event.preventDefault();
         if (!inputField.value) return;
 
@@ -67,7 +60,11 @@ export const list = (todos) => {
         addDeleteButton(newList);
         newList.onclick = loadList;
         listsContainer.append(newList);
+        addTodo('', '', '', '', '', inputField.value)
         inputField.value = "";
+        console.log(todos)
+        updateList()
+        
     });
 
     function addDeleteButton(listItem) {
@@ -78,4 +75,7 @@ export const list = (todos) => {
             listItem.remove();
         });
     }
+
+    listsContainer.append(allTodos)
 };
+

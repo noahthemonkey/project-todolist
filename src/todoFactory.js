@@ -1,7 +1,7 @@
 import {factory} from './domfactory.js'
 import { showNotes } from './showNotes.js'
 
-export const todoFactory = (title, description, notes, dueDate, priority) => {
+export const todoFactory = (title, description, notes, dueDate, priority, list) => {
     const todoContainer = document.getElementById('todoContainer')
     // const todoStart = factory('div', {class:'todoStart'}, 'Todolist 1')
     const todoDiv = factory('div', {id: `${title}`, class: 'collapsible'})
@@ -12,9 +12,13 @@ export const todoFactory = (title, description, notes, dueDate, priority) => {
     const todoPriority = factory('p', {class: `priority`, contentEditable: 'true'}, `${priority}`)
     const todoChecked = factory('input', {type: 'checkbox'})
     const todoDelete = factory('button', {class: 'delete'})
+    const todoShow = factory('button', {class: 'shownotes'})
+    const todoList = factory('p', {class: `list`}, `${list}`); 
 
+    todoShow.textContent = 'Show Notes'
+    todoDelete.textContent = 'Delete Todo'
     
-    todoDiv.addEventListener('click', showNotes)
+    todoShow.addEventListener('click', showNotes)
 
     todoDelete.addEventListener('click', deleteTodo)
 
@@ -43,8 +47,9 @@ export const todoFactory = (title, description, notes, dueDate, priority) => {
 }
 
 
-todoDiv.append(todoTitle, todoDescription, todoNotes, tododueDate, todoPriority, todoChecked, todoDelete)
+todoDiv.append(todoTitle, todoDescription, todoNotes, tododueDate, todoPriority, todoChecked, todoDelete, todoShow)
 todoContainer.appendChild(todoDiv)
 
+return {title, description, notes, dueDate, priority, list: todoList.textContent};
 
 }

@@ -3,65 +3,155 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
+
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
+
 /* --------------------------------------------------------------------------------*/
 
 #content {
-    background-color: rgb(51, 49, 74);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
+  background-color: rgb(51, 49, 74);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
 }
+
 #todoContainer {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    height: 500px;
-    
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 500px;
+
 }
+
 #lists {
   display: grid;
   background-color: wheat;
@@ -69,14 +159,15 @@ table {
 }
 
 [id*="todoTitle"] {
-    font-size: 18px;
-	font-weight: bold;
-	color: rgb(255, 0, 0);
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(255, 0, 0);
 }
-[id*="todoTitle"] > p{
-    font-size: 16px;
-	font-weight: 100;
-	color: white;
+
+[id*="todoTitle"]>p {
+  font-size: 16px;
+  font-weight: 100;
+  color: white;
 }
 
 .collapsible {
@@ -91,7 +182,11 @@ table {
   font-size: 15px;
 }
 
-.active, .collapsible:hover {
+.shownotes {
+  background-color: rgb(188, 188, 238)
+}
+
+.shownotes:hover {
   background-color: #555;
 }
 
@@ -100,10 +195,10 @@ table {
   overflow: hidden;
 }
 
-input{
-	background: none;
-	border: none;
-	color: white;
+input {
+  background: none;
+  border: none;
+  color: white;
 }
 
 #newList {

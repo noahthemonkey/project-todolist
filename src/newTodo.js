@@ -1,62 +1,80 @@
 import { factory } from "./domfactory";
-import { todoData, todos } from "./todoData";
+import { todoData, todos, addTodo, getTodos } from "./todoData";
 import { showNotes } from './showNotes.js'
-import {todoFactory} from './todoFactory.js'
+import { todoFactory } from './todoFactory.js'
+import { listNav } from "./listNav";
+import { currentSelected, loadList, selectedList, setSelect } from "./loadList";
 
 export const newTodo = () => {
-  const inputContainer = document.createElement('div');
-  inputContainer.setAttribute('id', 'inputContainer');
-  content.appendChild(inputContainer);
+  const inputContainer = factory('div', { id: 'inputContainer' })
+  const todoTitle = factory('input', { id: 'todoTitle', type: 'text', placeholder: 'Title' })
+  const todoDescription = factory('input', { id: 'todoDecription', type: 'text', placeholder: 'Description' })
+  const todoNotes = factory('input', { id: 'todoNotes', type: 'text', placeholder: 'Notes' })
+  const todoPriority = factory('input', { id: 'todoPriority', type: 'text', placeholder: 'Priority' })
+  const todoDue = factory('input', { id: 'todoDue', type: 'text', placeholder: 'Due Date' })
+  const newBtn = factory('button', { id: 'newTodo', value: 'New Todo' })
+  newBtn.addEventListener('click', createTodo)
 
-  const todoTitle = document.createElement('input');
-  todoTitle.setAttribute('id', 'todoTitle');
-  todoTitle.setAttribute('type', 'text');
-  todoTitle.setAttribute('placeholder', 'title');
-  inputContainer.appendChild(todoTitle);
+  const todoOption = factory('select', { id: 'todoOption', placeholder: 'Current Selected List', value: selectedList })
+  const optionPlaceholder = factory('option', { id: 'listPlaceholder', value: selectedList, selected: true })
+  optionPlaceholder.textContent = '-- Current list selected -- '
 
-  const todoDescription = document.createElement('input');
-  todoDescription.setAttribute('id', 'todoDescription');
-  todoDescription.setAttribute('type', 'text');
-  todoDescription.setAttribute('placeholder', 'Description');
-  inputContainer.appendChild(todoDescription);
 
-  const todoNotes = document.createElement('input');
-  todoNotes.setAttribute('id', 'todoNotes');
-  todoNotes.setAttribute('type', 'text');
-  todoNotes.setAttribute('placeholder', 'Notes');
-  inputContainer.appendChild(todoNotes);
 
-  const todoPriority = document.createElement('input');
-  todoPriority.setAttribute('id', 'todoPriority');
-  todoPriority.setAttribute('type', 'text');
-  todoPriority.setAttribute('placeholder', 'Priority');
-  inputContainer.appendChild(todoPriority);
 
-  const todoDue = document.createElement('input');
-  todoDue.setAttribute('id', 'todoDue');
-  todoDue.setAttribute('type', 'text');
-  todoDue.setAttribute('placeholder', 'Due Date');
-  inputContainer.appendChild(todoDue);
 
-  const newBtn = document.createElement('button');
-  newBtn.setAttribute('id', 'newTodo');
-  newBtn.addEventListener('click', createTodo);
-  newBtn.textContent = 'New Todo'
+  const listContainer = document.getElementById('lists')
+  todoOption.appendChild(optionPlaceholder)
+  inputContainer.append(todoTitle, todoDescription, todoNotes, todoDue, newBtn, todoOption);
+  listContainer.appendChild(inputContainer)
 
-  inputContainer.appendChild(newBtn);
+
+
+
 
   function createTodo() {
-    const creatingTodo = todoFactory(todoTitle.value, todoDescription.value, todoNotes.value, todoDue.value, todoPriority.value);
-    for(let i = 0; i < 5; i++) {
-      inputContainer.children.item(i).value = '';
-    }
-
     // Store the new todo in the todoData
-    todos.push({
-      text: creatingTodo,
-      list: this.list
-    });
 
-    console.log(todos);
+
+    addTodo(todoTitle.value, todoDescription.value, todoNotes.value, todoDue.value, todoPriority.value, todoOption.value);
+    const loadTodo = todoFactory(todoTitle.value, todoDescription.value, todoNotes.value, todoDue.value, todoPriority.value, todoOption.value);
+
+
+
+    let listValues = todos.map(({ list }) => list)
+    for (let i = 0; i < 5; i++) {
+      inputContainer.children.item(i).value = '';
+
+
+
+    }
+    console.log(selectedList)
+    console.log(todos)
+
   }
+  updateList()
 };
+
+
+export const updateList = () => {
+
+  const todoOption = document.getElementById('todoOption')
+  const optionPlaceholder = document.getElementById('listPlaceholder')
+
+  // let todoLength = todos.length;
+  let listValues = todos.map(({ list }) => list);
+  listValues = [...new Set(listValues)];
+
+  todoOption.innerHTML = '';
+  for (let i = 0; i < listValues.length; i++) {
+    const todoList = document.createElement('option');
+    todoList.setAttribute('value', listValues[i]);
+    todoList.textContent = listValues[i];
+    if (listValues[i] === selectedList) {
+      todoList.setAttribute('selected', 'selected');
+    }
+    todoOption.appendChild(todoList);
+  }
+  todoOption.appendChild(optionPlaceholder);
+
+}

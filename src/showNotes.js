@@ -1,16 +1,18 @@
 import { todoFactory } from "./todoFactory"
 import { newTodo } from "./newTodo"
 export const showNotes = () => {
+  
     
-    var coll = document.getElementsByClassName("collapsible");
+    var coll = document.getElementsByClassName("shownotes");
 
     var i;
 
     const onClick = function() {
-      console.log(this.id)
-      this.classList.toggle("active");
+      console.log(this.parentElement.className)
+      const selectedNote = this.parentElement.classList
+      selectedNote.toggle('active')
     
-    var thisNotes = this.children.item(2);
+    var thisNotes = this.parentElement.children.item(2);
     if (thisNotes.style.display === "block") {
       thisNotes.style.display = "none";
     } else {
