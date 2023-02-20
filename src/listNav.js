@@ -1,15 +1,18 @@
 import { getTodos, todos, addTodo, getAllLists } from "./todoData.js";
 import { factory } from "./domfactory";
 import { todoFactory } from "./todoFactory"
-import { loadList, setSelect, } from "./loadList.js";
+import { loadList, selectedList, setSelect, } from "./loadList.js";
 import { updateList } from "./newTodo.js";
 
 export const listNav = (todos) => {
     const todoContainer = document.getElementById("todoContainer");
     const lists = document.getElementById("lists");
+
+    const listsTitle = factory('h1', { id: 'listsTitle' })
+    listsTitle.textContent = 'Create a new todolist'
     const listsContainer = document.createElement("ul");
 
-    const allTodos = factory("li", {id: 'AllTodos'});
+    const allTodos = factory("li", { id: 'AllTodos' });
     allTodos.textContent = "All Current Todos";
 
     const listsMap = todos.reduce((listsMap, todo) => {
@@ -35,6 +38,7 @@ export const listNav = (todos) => {
 
 
     const addListForm = document.createElement("form");
+
     addListForm.classList.add("add-list-form");
 
     const inputField = document.createElement("input");
@@ -47,7 +51,7 @@ export const listNav = (todos) => {
     submitBtn.textContent = "Create List";
     submitBtn.classList.add("create-list-btn");
 
-    addListForm.append(inputField, submitBtn);
+    addListForm.append(listsTitle, inputField, submitBtn);
     lists.append(listsContainer, addListForm, listsContainer);
 
     submitBtn.addEventListener("click", event => {
@@ -60,11 +64,10 @@ export const listNav = (todos) => {
         addDeleteButton(newList);
         newList.onclick = loadList;
         listsContainer.append(newList);
-        addTodo('', '', '', '', '', inputField.value)
-        inputField.value = "";
-        console.log(todos)
         updateList()
-        
+
+        inputField.value = "";
+
     });
 
     function addDeleteButton(listItem) {
@@ -72,7 +75,19 @@ export const listNav = (todos) => {
         deleteButton.textContent = "Delete";
         listItem.append(deleteButton);
         deleteButton.addEventListener("click", () => {
-            listItem.remove();
+            const listName = listItem.textContent.replace('Delete', '');
+            console.log(listName)
+            const todosFound = todos.filter(todoListNames => todoListNames.list == listName);
+
+            todosFound.forEach(todo => {
+                const index = todos.indexOf(todo);
+                todos.splice(index, 1);
+              });
+              console.log(listItem)
+              listItem.parentNode.removeChild(listItem)
+              loadList.call(document.querySelector('#AllTodos'))
+            console.log(todosFound)
+            updateList();
         });
     }
 

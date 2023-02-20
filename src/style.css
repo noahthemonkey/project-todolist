@@ -137,35 +137,46 @@ table {
 /* --------------------------------------------------------------------------------*/
 
 #content {
-  background-color: rgb(51, 49, 74);
+  background-color: rgb(197, 197, 197);
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
+  gap: 2%;
 }
 
 #todoContainer {
   display: grid;
+  grid-template-columns: 1fr;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
-  height: 500px;
+
+}
+#todoContainer > div {
+  width: 80%;
+  height: 50%;
+  display: flex;
 
 }
 
 #lists {
   display: grid;
-  background-color: wheat;
+  width: 60%;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(243, 243, 243);
   height: 500px;
+  box-shadow: 1px 5px 5px  rgb(102, 102, 102);
+
 }
 
 [id*="todoTitle"] {
-  font-size: 18px;
+  font-size: 1em;
   font-weight: bold;
-  color: rgb(255, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
 [id*="todoTitle"]>p {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 100;
   color: white;
 }
@@ -210,4 +221,44 @@ input {
 [class*="newList"] {
   height: 100px;
   background-color: wheat;
+}
+
+
+#lists > ul {
+  order: -1;
+  grid-column: 1 / span 2;
+  background-color: rgb(167, 167, 167);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 30%;
+  justify-content: center;
+  align-items: flex-start
+}
+
+#lists > ul > li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  height: 30%;
+  width: 70%;
+  font-size: 0.7em;
+  border: 1px black solid;
+  border-radius: 5px;
+  box-shadow: 2px 1px 1px 1px rgb(128, 128, 128);
+}
+
+#lists > ul > li > button {
+  font-size: 0.7em;
+  border-radius: 30%;
+}
+
+#lists > ul > .selected {
+  background-color: rgb(153, 189, 153);
+}
+#lists > form > h1 , #lists > #inputContainer > h1 {
+  border-bottom: 1px solid black;
+}
+
+#AllTodos {
+  order: -1;
 }

@@ -7,6 +7,8 @@ import { currentSelected, loadList, selectedList, setSelect } from "./loadList";
 
 export const newTodo = () => {
   const inputContainer = factory('div', { id: 'inputContainer' })
+  const inputTitle = factory('h1', {id: 'inputTitle'})
+  inputTitle.textContent = 'Create a new todo'
   const todoTitle = factory('input', { id: 'todoTitle', type: 'text', placeholder: 'Title' })
   const todoDescription = factory('input', { id: 'todoDecription', type: 'text', placeholder: 'Description' })
   const todoNotes = factory('input', { id: 'todoNotes', type: 'text', placeholder: 'Notes' })
@@ -25,7 +27,7 @@ export const newTodo = () => {
 
   const listContainer = document.getElementById('lists')
   todoOption.appendChild(optionPlaceholder)
-  inputContainer.append(todoTitle, todoDescription, todoNotes, todoDue, newBtn, todoOption);
+  inputContainer.append(inputTitle, todoTitle, todoDescription, todoNotes, todoDue, newBtn, todoOption);
   listContainer.appendChild(inputContainer)
 
 
@@ -36,7 +38,7 @@ export const newTodo = () => {
     // Store the new todo in the todoData
 
 
-    addTodo(todoTitle.value, todoDescription.value, todoNotes.value, todoDue.value, todoPriority.value, todoOption.value);
+    addTodo(todoTitle.value, todoDescription.value, todoNotes.value, todoDue.value, todoPriority.value, selectedList);
     const loadTodo = todoFactory(todoTitle.value, todoDescription.value, todoNotes.value, todoDue.value, todoPriority.value, todoOption.value);
 
 
@@ -48,8 +50,8 @@ export const newTodo = () => {
 
 
     }
-    console.log(selectedList)
-    console.log(todos)
+  console.log(todos)
+
 
   }
   updateList()

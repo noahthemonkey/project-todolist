@@ -6,7 +6,6 @@ export let selectedList = "All Current Todos"
 export const loadList = function () {
     setSelect(this)
     selectedList = this.textContent.replace("Delete", "");
-    console.log(selectedList)
     todoContainer.innerHTML = "";
 
     if (selectedList === "All Current Todos") {
@@ -45,6 +44,5 @@ export const setSelect = el => {
     [...el.parentElement.children].forEach(sib => sib.classList.remove('selected'));
     el.classList.add('selected')
     currentSelected = el.textContent.replace("Delete", "")
-    console.log(currentSelected)
     return currentSelected
 }

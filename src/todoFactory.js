@@ -1,5 +1,6 @@
 import {factory} from './domfactory.js'
 import { showNotes } from './showNotes.js'
+import { todos } from './todoData.js'
 
 export const todoFactory = (title, description, notes, dueDate, priority, list) => {
     const todoContainer = document.getElementById('todoContainer')
@@ -20,11 +21,15 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
     
     todoShow.addEventListener('click', showNotes)
 
-    todoDelete.addEventListener('click', deleteTodo)
+    todoDelete.addEventListener('click', () => deleteTodo.bind(todoDiv, todos.id)());
 
-    function deleteTodo(){
-       this.parentNode.remove()
+    function deleteTodo(id){
+        const index = todos.findIndex((todo) => todo.id === id)
+        todos.splice(index, 1)
+        this.remove()
+        console.log(todos)
     }
+    
 
     todoChecked.addEventListener('click', todoDone)
     function todoDone() {
