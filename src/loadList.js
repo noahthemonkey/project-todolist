@@ -5,6 +5,7 @@ export let selectedList = "All Current Todos"
 
 export const loadList = function () {
     setSelect(this)
+
     selectedList = this.textContent.replace("Delete", "");
     todoContainer.innerHTML = "";
 
@@ -34,6 +35,8 @@ export const loadList = function () {
 
         });
     }
+    
+
     return selectedList
 };
 

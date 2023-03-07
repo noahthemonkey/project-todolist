@@ -53,20 +53,22 @@ export const listNav = (todos) => {
 
     addListForm.append(listsTitle, inputField, submitBtn);
     lists.append(listsContainer, addListForm, listsContainer);
-
+    
     submitBtn.addEventListener("click", event => {
-
         event.preventDefault();
         if (!inputField.value) return;
-
+        
         const newList = factory("li", {});
         newList.textContent = inputField.value;
         addDeleteButton(newList);
+        
         newList.onclick = loadList;
-        listsContainer.append(newList);
-        updateList()
 
+        listsContainer.append(newList);
+        console.log(newList.textContent)
+        
         inputField.value = "";
+        updateList()
 
     });
 

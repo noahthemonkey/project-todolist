@@ -47,6 +47,8 @@ export const todos = [
   }
 ];
 
+
+
 export const getTodos = (listName) => {
   return todos.filter((todo) => todo.list === listName);
 };
@@ -63,6 +65,15 @@ export const addTodo = (title, description, notes, priority, dueDate, list) => {
     list
   });
 };
+
+export const allLists = () => {
+  let currentLists = []
+  let listValues = todos.map(({ list }) => list);
+  listValues = [...new Set(listValues)];
+  currentLists.push(listValues)
+  console.log(currentLists)
+  return currentLists;
+}
 
 
 
