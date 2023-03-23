@@ -1,5 +1,5 @@
 export function homePage() {
-    const todoContainer = document.getElementById("todoContainer");
+    const content = document.getElementById("content");
     const lists = document.getElementById("lists");
     todoContainer.innerHTML = "";
     lists.innerHTML = "";
@@ -8,6 +8,6 @@ export function homePage() {
     const homePageText = document.createElement("p");
     homePageText.textContent =
         "This is a simple todo app that allows you to create lists and todos. You can also edit and delete todos and lists. Enjoy!";
-    todoContainer.append(homePageTitle, homePageText);
+    content.append(homePageTitle, homePageText);
     
 }

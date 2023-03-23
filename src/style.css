@@ -137,7 +137,7 @@ table {
 /* --------------------------------------------------------------------------------*/
 
 #content {
-  background-color: rgb(197, 197, 197);
+  background-color: rgb(84, 84, 84);
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
@@ -163,7 +163,7 @@ table {
   display: grid;
   width: 60%;
   grid-template-columns: 1fr 1fr;
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(153, 92, 92);
   height: 500px;
   box-shadow: 1px 5px 5px  rgb(102, 102, 102);
 
@@ -183,7 +183,7 @@ table {
 
 .collapsible {
   border-radius: 10px;
-  background-color: #777;
+  background-color: #ffb3b3;
   color: white;
   cursor: pointer;
   width: 200px;
@@ -209,20 +209,9 @@ table {
 input {
   background: none;
   border: none;
-  color: white;
+  color: black;
+  
 }
-
-#newList {
-  background-color: red;
-  height: 50px;
-  width: 50px;
-}
-
-[class*="newList"] {
-  height: 100px;
-  background-color: wheat;
-}
-
 
 #lists > ul {
   order: -1;

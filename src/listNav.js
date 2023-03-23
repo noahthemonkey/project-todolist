@@ -12,8 +12,13 @@ export const listNav = (todos) => {
     listsTitle.textContent = 'Create a new todolist'
     const listsContainer = document.createElement("ul");
 
+
     const allTodos = factory("li", { id: 'AllTodos' });
     allTodos.textContent = "All Current Todos";
+
+    const completedTodos = factory("li", { id: 'CompletedTodos' });
+    completedTodos.textContent = "Completed Todos";
+        completedTodos.onclick = loadList
 
     const listsMap = todos.reduce((listsMap, todo) => {
         if (!listsMap[todo.list]) {
@@ -31,6 +36,7 @@ export const listNav = (todos) => {
     });
 
     allTodos.onclick = loadList;
+    
     const listItems = Array.from(listsContainer.querySelectorAll("li"));
     listItems.forEach(listItem => {
         listItem.onclick = loadList;
@@ -52,7 +58,7 @@ export const listNav = (todos) => {
     submitBtn.classList.add("create-list-btn");
 
     addListForm.append(listsTitle, inputField, submitBtn);
-    lists.append(listsContainer, addListForm, listsContainer);
+    lists.append(listsContainer, addListForm, );
     
     submitBtn.addEventListener("click", event => {
         event.preventDefault();
@@ -61,8 +67,7 @@ export const listNav = (todos) => {
         const newList = factory("li", {});
         newList.textContent = inputField.value;
         addDeleteButton(newList);
-        
-        newList.onclick = loadList;
+                newList.onclick = loadList;
 
         listsContainer.append(newList);
         console.log(newList.textContent)
@@ -93,6 +98,7 @@ export const listNav = (todos) => {
         });
     }
 
-    listsContainer.append(allTodos)
-};
+    listsContainer.append(allTodos, completedTodos)
+    listsContainer.classList.add("lists-container");
 
+};

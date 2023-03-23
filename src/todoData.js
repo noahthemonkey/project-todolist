@@ -7,7 +7,8 @@ export const todos = [
     notes: "Remember to get eggs, milk, bread, and vegetables",
     priority: "High",
     dueDate: "2023-02-10",
-    list: "General"
+    list: "General",
+    checked: true
   },
   {
     id: 5,
@@ -16,7 +17,8 @@ export const todos = [
     notes: "Remember to get eggs, milk, bread, and vegetables",
     priority: "High",
     dueDate: "2023-02-10",
-    list: "General"
+    list: "General",
+    checked: false
   },
   {
     id: 2,
@@ -25,7 +27,8 @@ export const todos = [
     notes: "Make sure to include all the key findings and recommendations",
     priority: "Critical",
     dueDate: "2023-02-15",
-    list: "Work"
+    list: "Work",
+    checked: false
   },
   {
     id: 3,
@@ -34,7 +37,8 @@ export const todos = [
     notes: "Check the availability for the earliest appointment",
     priority: "Low",
     dueDate: "2023-03-01",
-    list: "Health"
+    list: "Health",
+    checked: false
   },
   {
     id: 4,
@@ -43,7 +47,8 @@ export const todos = [
     notes: "Do not forget to save a receipt of the transaction",
     priority: "High",
     dueDate: "2023-02-20",
-    list: "Finance"
+    list: "Finance",
+    checked: false
   }
 ];
 

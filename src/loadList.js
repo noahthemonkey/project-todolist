@@ -17,9 +17,24 @@ export const loadList = function () {
                 todo.notes,
                 todo.priority,
                 todo.dueDate,
-                todo.list
+                todo.list,
+                todo.checked
 
             );
+        });
+    } else if (selectedList === "Completed Todos") {
+        todos.filter(todo => todo.checked === true).forEach(todo => {
+            todoFactory(
+                todo.title,
+                todo.description,
+                todo.notes,
+                todo.priority,
+                todo.dueDate,
+                todo.list,
+                todo.checked.checked == true
+
+            );
+
         });
     } else if (selectedList) {
         getTodos(selectedList).forEach(todo => {
