@@ -31,7 +31,7 @@ export const loadList = function () {
                 todo.priority,
                 todo.dueDate,
                 todo.list,
-                todo.checked.checked == true
+                todo.checked
 
             );
 
@@ -58,6 +58,10 @@ export const loadList = function () {
 
 
 export const setSelect = el => {
+    console.log(el); // add this line
+    if (!el) {
+        return;
+    }
     let currentSelected = '';
     [...el.parentElement.children].forEach(sib => sib.classList.remove('selected'));
     el.classList.add('selected')

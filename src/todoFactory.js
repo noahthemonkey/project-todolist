@@ -2,18 +2,20 @@ import {factory} from './domfactory.js'
 import { showNotes } from './showNotes.js'
 import { todos } from './todoData.js'
 
-export const todoFactory = (title, description = '', notes = '', dueDate = '', priority = '', list = '') => {
+export const todoFactory = (title, description, notes, dueDate, priority, list) => {
     const todoContainer = document.getElementById('todoContainer')
     const todoDiv = factory('div', {id: `${title}`, class: 'collapsible'})
     const todoTitle = factory('h1', {id: `todoTitle_${title}`, contentEditable: 'true'}, `${title}`)
     const todoDescription = factory('p', {class: 'description', contentEditable: 'true'}, `${description}`)
     const todoNotes = factory('p', {class: `notes`, contentEditable: 'true'}, `${notes}`)
-    const tododueDate = factory('p', {class: `dueDate`, contentEditable: 'true'}, `${dueDate}`)
+    const tododueDate = factory('input', {type: 'date', class: `dueDate`, contentEditable: 'true'}, `${dueDate}`)
     const todoPriority = factory('p', {class: `priority`, contentEditable: 'true'}, `${priority}`)
     const todoChecked = factory('input', {type: 'checkbox'})
     const todoDelete = factory('button', {class: 'delete'})
     const todoShow = factory('button', {class: 'shownotes'})
     const todoList = factory('p', {class: `list`}, `${list}`); 
+
+    tododueDate.value = dueDate
 
     todoShow.textContent = 'Show Notes'
     todoDelete.textContent = 'Delete Todo'
@@ -72,23 +74,29 @@ export const todoFactory = (title, description = '', notes = '', dueDate = '', p
     }
 
     todoChecked.addEventListener('click', todoDone)
-    
+
+      if (todos[index].checked) {
+    todoChecked.checked = true;
+  }
+
+
     function todoDone() {
     const index = todos.findIndex((todo) => todo.title === title)
-    if (todoChecked.checked == true) {
+        console.log(todos[index].checked)
+        
+    if (todoChecked.checked == true) {       
         todos[index].checked = true
-        console.log(todos)
+        todoChecked.checked == todos.checked
         
         for(var i = 0;i < 5; i++){
             this.parentNode.children.item(i).style.textDecoration = 'line-through'
-                
-
             this.parentNode.children.item(i).style.color = 'gray'
-
         }
 
     }else{
+                
         todos[index].checked = false
+        todoChecked.checked == todos.checked
         console.log(todos)
         
         for(var i = 0;i < 5; i++){
@@ -96,9 +104,11 @@ export const todoFactory = (title, description = '', notes = '', dueDate = '', p
             this.parentNode.children.item(i).style.color = 'black'
 
     }
-    this.parentNode.children.item(0).style.color = 'red'
     }
 }
+
+
+    todos[index].value = todoDue.value
 
 todoDiv.append(todoTitle, todoDescription, todoNotes, tododueDate, todoPriority, todoChecked, todoDelete, todoShow)
 todoContainer.appendChild(todoDiv)
