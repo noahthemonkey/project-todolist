@@ -135,14 +135,22 @@ table {
 }
 
 /* --------------------------------------------------------------------------------*/
+body {
+  font-family: 'Press Start 2P', cursive;
+}
+
 
 #content {
-  background-color: rgb(84, 84, 84);
+  background-color: rgb(255, 187, 227);
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   gap: 2%;
+  background-size: cover;
+  background-position: center;
 }
+
 
 #todoContainer {
   display: grid;
@@ -159,17 +167,16 @@ width: 100%;
 
 }
 
-#todoContainer > div > input {
-
-}
-
 #lists {
+  padding: 1%;
   display: grid;
-  width: 60%;
+  border: 5px solid rgb(255, 139, 203);
+  box-shadow: 1px 5px 5px rgb(255, 139, 203);
+
   grid-template-columns: 1fr 1fr;
-  background-color: rgb(153, 92, 92);
+  background-color: rgb(255, 187, 227);
   height: 500px;
-  box-shadow: 1px 5px 5px  rgb(102, 102, 102);
+  box-shadow: 1px 5px 5px  rgb(0, 0, 0);
 
 }
 
@@ -187,7 +194,7 @@ width: 100%;
 
 .collapsible {
   border-radius: 10px;
-  background-color: #ffb3b3;
+  background-color: #d19cc6;
   color: white;
   cursor: pointer;
   width: 200px;
@@ -220,38 +227,106 @@ input {
 #lists > ul {
   order: -1;
   grid-column: 1 / span 2;
-  background-color: rgb(167, 167, 167);
+  background-color: rgba(64, 61, 107, 0.349);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 30%;
   justify-content: center;
   align-items: flex-start
 }
 
 #lists > ul > li {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   padding: 10px;
   height: 30%;
   width: 70%;
   font-size: 0.7em;
-  border: 1px black solid;
   border-radius: 5px;
-  box-shadow: 2px 1px 1px 1px rgb(128, 128, 128);
+  box-shadow: 2px 1px 1px 1px rgb(255, 255, 255);
 }
 
 #lists > ul > li > button {
-  font-size: 0.7em;
-  border-radius: 30%;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10%;
+  background-color: #ff7eb9;
+  border: 2px solid #917eff;
+  box-shadow: 1px 1px 1px #917eff;
+  font-size: 1.2em;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.1s ease, border-color 0.3s ease;
+}
+
+#lists > ul > li > button:hover {
+  background-color: #917eff;
+  border-color: #ff7eb9;
+}
+
+#lists > ul > li > button::before {
+  content: "x";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #lists > ul > .selected {
-  background-color: rgb(153, 189, 153);
+  background-color: rgba(255, 139, 203, 0.466);
 }
-#lists > form > h1 , #lists > #inputContainer > h1 {
-  border-bottom: 1px solid black;
-}
+
 
 #AllTodos {
   order: -1;
 }
+#CompletedTodos {
+  order: -1;
+}
+
+input[type="date"] {
+  font-family: 'Press Start 2P', cursive;
+  appearance: none;
+  box-sizing: border-box;
+  border: 1px solid black;
+  background: transparent;
+  font-size: 0.7rem;
+  padding: 8px;
+  ::-webkit-datetime-edit-text { padding: 0 2rem; }
+  ::-webkit-datetime-edit-month-field { text-transform: uppercase; }
+  ::-webkit-datetime-edit-day-field { text-transform: uppercase; }
+  ::-webkit-datetime-edit-year-field { text-transform: uppercase; }
+  ::-webkit-inner-spin-button { display: none; }
+  ::-webkit-calendar-picker-indicator { background: transparent;}
+}
+
+
+h1 {
+  text-shadow: 3px 0px 3px #6200ff;
+  animation: glitch 6s infinite linear;
+}
+@keyframes glitch {
+  0% {
+    transform: skew(1deg);
+    text-shadow: 0 0 6px #ff7eb9, 
+  }
+  50% {
+    
+    transform: skew(0deg);
+    text-shadow: 0 0 3px #ff7eb9
+
+  }
+  100% {
+    transform: skew(2deg);
+    text-shadow: 50px 20px 1px #917eff,
+
+  }
+}
+

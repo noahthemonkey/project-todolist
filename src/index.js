@@ -12,6 +12,7 @@ import { loadList } from "./loadList"
 
 const content = document.getElementById('content')
 
+
 const todoContainer = document.getElementById('todoContainer')
 homePage()
 

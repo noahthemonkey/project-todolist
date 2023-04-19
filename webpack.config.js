@@ -5,6 +5,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'main.js',
+    // Set the publicPath to the root of your website
+    publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
@@ -23,10 +25,18 @@ module.exports = {
      {
        test: /\.(png|svg|jpg|jpeg|gif)$/i,
        type: 'asset/resource',
+       // Set the output path for your images
+       generator: {
+         filename: 'imgs/[name][ext]'
+       }
      },
      {
       test: /\.(woff|woff2|eot|ttf|otf)$/i,
       type: 'asset/resource',
+      // Set the output path for your fonts
+      generator: {
+        filename: 'fonts/[name][ext]'
+      }
     },
     ],
   },

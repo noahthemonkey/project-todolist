@@ -79,7 +79,7 @@ export const listNav = (todos) => {
 
     function addDeleteButton(listItem) {
         const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
+        deleteButton.textContent = "";
         listItem.append(deleteButton);
         deleteButton.addEventListener("click", () => {
             const listName = listItem.textContent.replace('Delete', '');
