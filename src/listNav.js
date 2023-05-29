@@ -9,7 +9,7 @@ export const listNav = (todos) => {
     const lists = document.getElementById("lists");
 
     const listsTitle = factory('h1', { id: 'listsTitle' })
-    listsTitle.textContent = 'Create a new todolist'
+    listsTitle.textContent = 'Create a new list'
     const listsContainer = document.createElement("ul");
 
 
@@ -97,7 +97,11 @@ export const listNav = (todos) => {
             updateList();
         });
     }
+    const listsh1 = document.createElement('h1')
+    listsh1.setAttribute('ID', 'listsh1')
+    listsh1.textContent = 'Todo Lists'
 
+    lists.appendChild(listsh1)
     listsContainer.append(allTodos, completedTodos)
     listsContainer.classList.add("lists-container");
 

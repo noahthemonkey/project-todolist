@@ -1,154 +1,41 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* --------------------------------------------------------------------------------*/
 body {
   font-family: 'Press Start 2P', cursive;
+  z-index: -2;
 }
 
 
 #content {
-  background-color: rgb(255, 187, 227);
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
-  gap: 2%;
-  background-size: cover;
-  background-position: center;
+  gap: 200px;
+
+}
+
+body {
+  background: linear-gradient(-45deg, #000000, #917eff, #ff7eb9);
+  background-size: 400% 400%;
+  animation: hueShift 10s ease-in-out infinite;
+
+  
+}
+
+#wrapper {
+
+}
+
+
+
+@keyframes hueShift {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
 }
 
 
@@ -158,13 +45,51 @@ body {
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
+  
 
 }
-#todoContainer > div {
-width: 100%;
-    height: 150px;
+
+#todoContainer>div {
+  display: grid;
+  width: 100%;
+  border: 2px solid #ff7eb9; /* Cute border */
+  border-radius: 10px; /* Rounded corners */
+  background: linear-gradient(135deg, #ff7eb9, #917eff); /* Vaporwave gradient background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  padding: 4%;
+  max-height: 200px;
+}
+
+#todoContainer>div:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 
+
+button {
+  font-family: 'Press Start 2P', cursive;
+
+}
+.delete {
+  background-color: #ff4d4d; /* Red background color */
+  color: white; /* White font color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px 10px; /* Padding around the text */
+  cursor: pointer; /* Change cursor to pointer when hovering */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.delete:hover {
+  background-color: #b40000; /* Darker red background color on hover */
 }
 
 #lists {
@@ -176,7 +101,7 @@ width: 100%;
   grid-template-columns: 1fr 1fr;
   background-color: rgb(255, 187, 227);
   height: 500px;
-  box-shadow: 1px 5px 5px  rgb(0, 0, 0);
+  box-shadow: 1px 5px 5px rgb(0, 0, 0);
 
 }
 
@@ -214,17 +139,38 @@ width: 100%;
 
 .notes {
   display: none;
-  overflow: hidden;
+  overflow-y: auto; /* Enable scrolling when content exceeds the fixed height */
+  height: 50px; /* Set a fixed height for the notes */
+  transition: max-height 2s ease-in-out;
 }
 
 input {
   background: none;
   border: none;
   color: black;
-  
+  font-family: 'Press Start 2P', cursive;
+
 }
 
-#lists > ul {
+input::placeholder {
+  color: rgba(80, 80, 80, 0.555);
+  font-family: 'Press Start 2P', cursive;
+}
+
+button {
+  border-radius: 10px;
+  background-color: #d19cc6;
+  color: white;
+  cursor: pointer;
+  width: 200px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+
+#lists>ul {
   order: -1;
   grid-column: 1 / span 2;
   background-color: rgba(64, 61, 107, 0.349);
@@ -235,7 +181,7 @@ input {
   align-items: flex-start
 }
 
-#lists > ul > li {
+#lists>ul>li {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
@@ -247,7 +193,7 @@ input {
   box-shadow: 2px 1px 1px 1px rgb(255, 255, 255);
 }
 
-#lists > ul > li > button {
+#lists>ul>li>button {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -266,12 +212,12 @@ input {
   transition: background-color 0.1s ease, border-color 0.3s ease;
 }
 
-#lists > ul > li > button:hover {
+#lists>ul>li>button:hover {
   background-color: #917eff;
   border-color: #ff7eb9;
 }
 
-#lists > ul > li > button::before {
+#lists>ul>li>button::before {
   content: "x";
   position: absolute;
   top: 50%;
@@ -279,7 +225,7 @@ input {
   transform: translate(-50%, -50%);
 }
 
-#lists > ul > .selected {
+#lists>ul>.selected {
   background-color: rgba(255, 139, 203, 0.466);
 }
 
@@ -287,6 +233,7 @@ input {
 #AllTodos {
   order: -1;
 }
+
 #CompletedTodos {
   order: -1;
 }
@@ -299,12 +246,30 @@ input[type="date"] {
   background: transparent;
   font-size: 0.7rem;
   padding: 8px;
-  ::-webkit-datetime-edit-text { padding: 0 2rem; }
-  ::-webkit-datetime-edit-month-field { text-transform: uppercase; }
-  ::-webkit-datetime-edit-day-field { text-transform: uppercase; }
-  ::-webkit-datetime-edit-year-field { text-transform: uppercase; }
-  ::-webkit-inner-spin-button { display: none; }
-  ::-webkit-calendar-picker-indicator { background: transparent;}
+
+  ::-webkit-datetime-edit-text {
+    padding: 0 2rem;
+  }
+
+  ::-webkit-datetime-edit-month-field {
+    text-transform: uppercase;
+  }
+
+  ::-webkit-datetime-edit-day-field {
+    text-transform: uppercase;
+  }
+
+  ::-webkit-datetime-edit-year-field {
+    text-transform: uppercase;
+  }
+
+  ::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    background: transparent;
+  }
 }
 
 
@@ -312,17 +277,19 @@ h1 {
   text-shadow: 3px 0px 3px #6200ff;
   animation: glitch 6s infinite linear;
 }
+
 @keyframes glitch {
   0% {
     transform: skew(1deg);
-    text-shadow: 0 0 6px #ff7eb9, 
+    text-shadow: 0 0 6px #ff7eb9,
   }
+
   50% {
-    
+
     transform: skew(0deg);
     text-shadow: 0 0 3px #ff7eb9
-
   }
+
   100% {
     transform: skew(2deg);
     text-shadow: 50px 20px 1px #917eff,
@@ -330,3 +297,47 @@ h1 {
   }
 }
 
+html,
+body,
+#content {
+  height: 100%;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fd45aa56;
+  outline: none;
+  background-color: #fd45aa75;
+  font-family: "Ｖａｐｏｒｗａｖｅ";
+  font-size: 16px;
+  transition: all 0.9s ease-in-out;
+}
+
+input[type="checkbox"]::before {
+  content: "✓";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2px;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+input[type="checkbox"]:checked::before {
+  opacity: 1;
+}
+
+#listsh1 {
+  order: -2;
+
+}

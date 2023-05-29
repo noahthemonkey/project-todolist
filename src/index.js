@@ -20,6 +20,7 @@ homePage()
 document.addEventListener("DOMContentLoaded", function() {
     loadList.call(document.querySelector('#AllTodos'))
     updateList()
+    
 
     });
 

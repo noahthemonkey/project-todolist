@@ -14,6 +14,7 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
     const todoDelete = factory('button', {class: 'delete'})
     const todoShow = factory('button', {class: 'shownotes'})
     const todoList = factory('p', {class: `list`}, `${list}`); 
+    const buttonContainer = factory('div', {class: 'buttonContainer'});
 
     tododueDate.value = dueDate
 
@@ -80,40 +81,40 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
   }
 
 
-    function todoDone() {
-    const index = todos.findIndex((todo) => todo.title === title)
-        console.log(todos[index].checked)
-        
-    if (todoChecked.checked == true) {       
-        todos[index].checked = true
-        todoChecked.checked == todos.checked
-        
-        for(var i = 0;i < 5; i++){
-            this.parentNode.children.item(i).style.textDecoration = 'line-through'
-            this.parentNode.children.item(i).style.color = 'gray'
-        }
-
-    }else{
-                
-        todos[index].checked = false
-        todoChecked.checked == todos.checked
-        console.log(todos)
-        
-        for(var i = 0;i < 5; i++){
-            this.parentNode.children.item(i).style.textDecoration = 'none'
-            this.parentNode.children.item(i).style.color = 'black'
-
+  function todoDone() {
+    const index = todos.findIndex((todo) => todo.title === title);
+    console.log(todos[index].checked);
+  
+    if (todoChecked.checked == true) {
+      todos[index].checked = true;
+      todoChecked.checked == todos.checked;
+      this.parentNode.style.opacity = '0.7'; // set opacity to 50%
+    } else {
+      todos[index].checked = false;
+      todoChecked.checked == todos.checked;
+      console.log(todos);
+  
+      this.parentNode.style.opacity = '1'; // set opacity back to 100%
     }
-    }
-}
+  }
 
 
     todos[index].value = todoDue.value
-
-todoDiv.append(todoTitle, todoDescription, todoNotes, tododueDate, todoPriority, todoChecked, todoDelete, todoShow)
+    buttonContainer.append(todoChecked, todoShow, todoDelete);
+    todoDiv.append(todoTitle, todoDescription, todoNotes, tododueDate, todoPriority, buttonContainer);
 todoContainer.appendChild(todoDiv)
 
+
+const checkedTodos = todos.filter(todo => todo.checked);
+checkedTodos.forEach(todo => {
+  const todoDiv = document.getElementById(todo.title);
+  const todoChecked = todoDiv.querySelector('input[type="checkbox"]');
+  todoChecked.checked = true;
+  todoDiv.style.opacity = '0.7';
+});
+
 return {title, description, notes, dueDate, priority, list: todoList.textContent};
+
 
 }
   

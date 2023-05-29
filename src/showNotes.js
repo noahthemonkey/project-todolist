@@ -2,7 +2,6 @@ import { todoFactory } from "./todoFactory"
 import { newTodo } from "./newTodo"
 export const showNotes = () => {
   
-    
     var coll = document.getElementsByClassName("shownotes");
 
     var i;
@@ -12,16 +11,23 @@ export const showNotes = () => {
       const selectedNote = this.parentElement.classList
       selectedNote.toggle('active')
     
-    var thisNotes = this.parentElement.children.item(2);
-    if (thisNotes.style.display === "block") {
-      thisNotes.style.display = "none";
-    } else {
-      thisNotes.style.display = "block";
+      var thisNotes = this.parentElement.parentElement.children.item(2);
+      if (thisNotes.style.display === "block") {
+        thisNotes.style.display = "none";
+        thisNotes.style.maxHeight = "0";
+        console.log('close')
+      } else {
+        thisNotes.style.display = "block";
+        console.log('open')
+        
+      }
     }
-  }
     
     for (i = 0; i < coll.length; i++) {
       coll[i].onclick = onClick
     }
 
 }
+window.onload = () => {
+  showNotes();
+};
