@@ -24,6 +24,10 @@ body {
 
 }
 
+h1 {
+  font-size: 22px;
+}  
+
 
 
 @keyframes hueShift {
@@ -173,13 +177,19 @@ button {
 #lists>ul {
   order: -1;
   grid-column: 1 / span 2;
-  background-color: rgba(64, 61, 107, 0.349);
+  background-color: rgba(248, 248, 248, 0.349);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 30%;
   justify-content: center;
   align-items: flex-start
 }
+
+#AllTodos, #CompletedTodos{
+  background-color: #e1eedd;
+}
+
+
 
 #lists>ul>li {
   position: relative;
@@ -191,8 +201,13 @@ button {
   font-size: 0.7em;
   border-radius: 5px;
   box-shadow: 2px 1px 1px 1px rgb(255, 255, 255);
+  transition: all 0.3s ease; /* Add transition to normal state */
 }
 
+#lists>ul>li:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
 #lists>ul>li>button {
   position: absolute;
   top: 5px;
@@ -226,7 +241,7 @@ button {
 }
 
 #lists>ul>.selected {
-  background-color: rgba(255, 139, 203, 0.466);
+  background-color: #7eff93;
 }
 
 
