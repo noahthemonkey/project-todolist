@@ -88,13 +88,13 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
     if (todoChecked.checked == true) {
       todos[index].checked = true;
       todoChecked.checked == todos.checked;
-      this.parentNode.style.opacity = '0.7'; // set opacity to 50%
+      this.parentNode.parentNode.style.opacity = '0.7'; // set opacity to 50%
     } else {
       todos[index].checked = false;
       todoChecked.checked == todos.checked;
       console.log(todos);
   
-      this.parentNode.style.opacity = '1'; // set opacity back to 100%
+      this.parentNode.parentNode.style.opacity = '1'; // set opacity back to 100%
     }
   }
 

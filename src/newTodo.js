@@ -19,6 +19,7 @@ export const newTodo = () => {
   const todoDuedate = format(new Date(), 'yyyy-MM-dd')
   const newBtn = factory('button', { id: 'newTodo', value: 'New Todo' })
   newBtn.addEventListener('click', createTodo)
+  newBtn.textContent = 'Create Todo'
 
 //   const todoOption = factory('select', { id: 'todoOption', placeholder: 'Current Selected List', value: selectedList })
 //   const optionPlaceholder = factory('option', { id: 'listPlaceholder', value: selectedList, selected: true })

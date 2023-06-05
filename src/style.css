@@ -22,42 +22,11 @@ body {
 
 
 body {
-  background: linear-gradient(-45deg, #000000, #917eff, #ff7eb9);
+  background: linear-gradient(-45deg, #cbffd8, #6db970, #3ed157);
   background-size: 400% 400%;
-  animation: hueShift 10s ease-in-out infinite;
+  animation: hueShift 3s alternate infinite;
 
-  
 }
-
-#wrapper {
-height: 100%;
-}
-
-h1 {
-  font-size: 22px;
-}  
-#todoContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 22px;
-  height: 500px; /* set a fixed height */
-}
-
-#todoContainer>div {
-  display: grid;
-  width: 100%;
-  border: 2px solid #ff7eb9;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #ff7eb9, #917eff);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  padding: 4%;
-  height: 200px; /* set a fixed height */
-}
-
-
 @keyframes hueShift {
   0% {
     background-position: 50% 2%;
@@ -70,28 +39,39 @@ h1 {
   }
 }
 
-
-#todoContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 22px;
-  
-
+#wrapper {
+height: 100%;
 }
+
+h1 {
+  font-size: 22px;
+}  
+
 
 #todoContainer>div {
   display: grid;
-  width: 100%;
-  border: 2px solid #ff7eb9; /* Cute border */
-  border-radius: 10px; /* Rounded corners */
-  background: linear-gradient(135deg, #ff7eb9, #917eff); /* Vaporwave gradient background */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  width: 90%;
+  border: 2px solid #6bda7e;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8cdfa5, #82f391);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
   padding: 4%;
-  max-height: 200px;
+  height: 200px; /* set a fixed height */
 }
+
+
+
+
+
+#todoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
+}
+
 
 #todoContainer>div:hover {
   transform: translateY(-5px); /* Slight lift on hover */
@@ -106,10 +86,7 @@ h1 {
 
 
 
-button {
-  font-family: 'Press Start 2P', cursive;
 
-}
 .delete {
   background-color: #ff4d4d; /* Red background color */
   color: white; /* White font color */
@@ -140,7 +117,6 @@ button {
 
 .collapsible {
   border-radius: 10px;
-  background-color: #d19cc6;
   color: white;
   cursor: pointer;
   width: 200px;
@@ -151,7 +127,9 @@ button {
 }
 
 .shownotes {
-  background-color: rgb(188, 188, 238)
+  background-color: #adcaa4;
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px 10px; /* Padding around the text */
 }
 
 .shownotes:hover {
@@ -179,6 +157,7 @@ input::placeholder {
 }
 
 button {
+  font-family: 'Press Start 2P', cursive;
   border-radius: 10px;
   background-color: #d19cc6;
   color: white;
@@ -191,26 +170,30 @@ button {
 }
 
 #lists {
-  padding: 1%;
+  padding: 3%;
   display: grid;
-  border: 5px solid rgb(255, 139, 203);
-  box-shadow: 1px 5px 5px rgb(255, 139, 203);
+  border: 10px solid #aef58d8a;
+
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.1fr;
-  background-color: rgb(255, 187, 227);
-  box-shadow: 1px 5px 5px rgb(0, 0, 0);
+  grid-template-rows: 0.1fr 0.7fr 1fr;
+  background-color: #d6ebcd;
+  box-shadow: 3px 5px 5px rgb(0, 0, 0);
   min-height: 100%;
+  gap: 3%;
+}
+#listsh1 {
+  order: -2;
 }
 
 #lists>ul {
   order: -1;
   grid-column: 1 / span 2;
   border-radius: 1%;
-  box-shadow: 5px 5px 2px 2px rgb(255, 255, 255);
+  box-shadow: 1px 2px 2px 2px rgb(78, 77, 77);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   height: 100%;
 }
 
@@ -223,11 +206,13 @@ button {
 #lists>ul>li {
   position: relative;
   display: grid;
+  text-align: center;
   grid-template-columns: 1fr;
+  background-color: #adcaa4;
   padding: 10px;
-  height: 30%;
-  width: 70%;
-  font-size: 0.7em;
+  height: 50px;
+  width: 250px;
+  font-size: 0.8em;
   border-radius: 5px;
   box-shadow: 2px 1px 1px 1px rgb(255, 255, 255);
   transition: all 0.3s ease; /* Add transition to normal state */
@@ -245,9 +230,9 @@ button {
   width: 20px;
   height: 20px;
   border-radius: 10%;
-  background-color: #ff7eb9;
-  border: 2px solid #917eff;
-  box-shadow: 1px 1px 1px #917eff;
+  background-color: #64a16f;
+  border: 2px solid #d6ebcd;
+  box-shadow: 1px 1px 1px #646464;
   font-size: 1.2em;
   color: #fff;
   font-weight: bold;
@@ -258,8 +243,8 @@ button {
 }
 
 #lists>ul>li>button:hover {
-  background-color: #917eff;
-  border-color: #ff7eb9;
+  background-color: #b40000;
+  border-color: #fcfcfc;
 }
 
 #lists>ul>li>button::before {
@@ -272,6 +257,22 @@ button {
 
 #lists>ul>.selected {
   background-color: #7eff93;
+}
+
+#inputContainer {
+  display: grid;
+  grid-template-rows: repeat(7, 0.1fr);
+  gap: 5px;
+}
+.add-list-form {
+  display: grid;
+  grid-template-rows: 0.1fr 0.2fr 0.2fr;
+}
+#inputContainer button,
+.add-list-form button {
+  background-color: #6bda7e;
+  width: 200px;
+  height: 50px;
 }
 
 
@@ -320,26 +321,20 @@ input[type="date"] {
 
 
 h1 {
-  text-shadow: 3px 0px 3px #6200ff;
-  animation: glitch 6s infinite linear;
+  font-size: 22px;
+  animation: jump 2s ease-in-out infinite;
 }
 
-@keyframes glitch {
+@keyframes jump {
   0% {
-    transform: skew(1deg);
-    text-shadow: 0 0 6px #ff7eb9,
+    transform: translateY(0);
   }
-
   50% {
-
-    transform: skew(0deg);
-    text-shadow: 0 0 3px #ff7eb9
+    transform: translateY(-3px);
+    text-shadow: 2px 2px 2px #36a047;
   }
-
   100% {
-    transform: skew(2deg);
-    text-shadow: 50px 20px 1px #917eff,
-
+    transform: translateY(0);
   }
 }
 
@@ -355,9 +350,9 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #fd45aa56;
+  border: 2px solid #64a16f;
   outline: none;
-  background-color: #fd45aa75;
+  background-color: #b8e6aa;
   font-family: "Ｖａｐｏｒｗａｖｅ";
   font-size: 16px;
   transition: all 0.9s ease-in-out;
@@ -383,7 +378,4 @@ input[type="checkbox"]:checked::before {
   opacity: 1;
 }
 
-#listsh1 {
-  order: -2;
 
-}
