@@ -87,15 +87,14 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
   
     if (todoChecked.checked == true) {
       todos[index].checked = true;
-      todoChecked.checked == todos.checked;
       this.parentNode.parentNode.style.opacity = '0.7'; // set opacity to 50%
     } else {
       todos[index].checked = false;
-      todoChecked.checked == todos.checked;
       console.log(todos);
   
       this.parentNode.parentNode.style.opacity = '1'; // set opacity back to 100%
     }
+    console.log(todos)
   }
 
 
@@ -107,10 +106,14 @@ todoContainer.appendChild(todoDiv)
 
 const checkedTodos = todos.filter(todo => todo.checked);
 checkedTodos.forEach(todo => {
-  const todoDiv = document.getElementById(todo.title);
-  const todoChecked = todoDiv.querySelector('input[type="checkbox"]');
-  todoChecked.checked = true;
-  todoDiv.style.opacity = '0.7';
+  const todoCompletedSelect = document.getElementById(todo.title);
+  console.log(todoCompletedSelect)
+
+  if (todoCompletedSelect) {
+    const todoChecked = todoCompletedSelect.querySelector('input[type="checkbox"]');
+    todoChecked.checked = true;
+    todoCompletedSelect.style.opacity = '0.7';
+  }
 });
 
 return {title, description, notes, dueDate, priority, list: todoList.textContent};

@@ -19,7 +19,6 @@ export const loadList = function () {
                 todo.dueDate,
                 todo.list,
                 todo.checked
-
             );
         });
     } else if (selectedList === "Completed Todos") {
@@ -32,9 +31,7 @@ export const loadList = function () {
                 todo.dueDate,
                 todo.list,
                 todo.checked
-
             );
-
         });
     } else if (selectedList) {
         getTodos(selectedList).forEach(todo => {
@@ -45,9 +42,7 @@ export const loadList = function () {
                 todo.priority,
                 todo.dueDate,
                 todo.list
-
             );
-
         });
     }
     

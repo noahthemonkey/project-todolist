@@ -13,22 +13,20 @@ export const newTodo = () => {
   const todoTitle = factory('input', { id: 'todoTitle', type: 'text', placeholder: 'Title' })
   const todoDescription = factory('input', { id: 'todoDecription', type: 'text', placeholder: 'Description' })
   const todoNotes = factory('input', { id: 'todoNotes', type: 'text', placeholder: 'Notes' })
-  const todoPriority = factory('input', { id: 'todoPriority', type: 'text', placeholder: 'Priority' })
-  // const todoDue = factory('input', { id: 'todoDue', type: 'date', placeholder: 'Due Date' })
+  
+  const todoPriority = factory('select', { id: 'todoPriority' });
+  const highPriority = factory('option', { value: 'high' });
+  highPriority.textContent = 'High Priority';
+  const mediumPriority = factory('option', { value: 'medium' });
+  mediumPriority.textContent = 'Medium Priority';
+  const lowPriority = factory('option', { value: 'low' });
+  lowPriority.textContent = 'Low Priority';
+  todoPriority.append(highPriority, mediumPriority, lowPriority);
+  
   const todoDue = factory('input', { id: 'todoDue', type: 'date', placeholder: 'Due Date' })
-  const todoDuedate = format(new Date(), 'yyyy-MM-dd')
   const newBtn = factory('button', { id: 'newTodo', value: 'New Todo' })
   newBtn.addEventListener('click', createTodo)
   newBtn.textContent = 'Create Todo'
-
-//   const todoOption = factory('select', { id: 'todoOption', placeholder: 'Current Selected List', value: selectedList })
-//   const optionPlaceholder = factory('option', { id: 'listPlaceholder', value: selectedList, selected: true })
-//   optionPlaceholder.textContent = '-- Current list selected -- '
-//   todoOption.appendChild(optionPlaceholder);
-
-// todoOption.addEventListener('change', () => {
-//   selectedList = todoOption.value;
-// });
 
 
 
@@ -46,36 +44,36 @@ export const newTodo = () => {
 
   
 
-function createTodo() {
-  console.log(inputContainer.children)
-  addTodo(
-    todoTitle.value,
-    todoDescription.value,
-    todoDue.value,
-    todoPriority.value,
-    todoNotes.value,
-    selectedList
-  )
-
-  const loadTodo = todoFactory(
-    todoTitle.value,
-    todoDescription.value,
-    todoNotes.value,
-    todoDue.value,
-    todoPriority.value,
-    selectedList
-  )
-
-
-  // Clear input fields
-  console.log('Before clearing input fields:', inputContainer.children);
-  for (let i = 1; i < inputContainer.children.length; i++) {
-    inputContainer.children[i].value = '';
+  function createTodo() {
+    console.log(inputContainer.children)
+    addTodo(
+      todoTitle.value,
+      todoDescription.value,
+      todoDue.value,
+      todoPriority.value,
+      todoNotes.value,
+      selectedList
+    )
+  
+    const loadTodo = todoFactory(
+      todoTitle.value,
+      todoDescription.value,
+      todoNotes.value,
+      todoDue.value,
+      todoPriority.value,
+      selectedList
+    )
+  
+  
+    // Clear input fields
+    console.log('Before clearing input fields:', inputContainer.children);
+    for (let i = 1; i < inputContainer.children.length; i++) {
+      inputContainer.children[i].value = '';
+    }
+    console.log('After clearing input fields:', inputContainer.children);
+    updateList()
+    loadList(selectedList)
   }
-  console.log('After clearing input fields:', inputContainer.children);
-  updateList()
-  loadList(selectedList)
-}
 
 
   console.log(todos)
