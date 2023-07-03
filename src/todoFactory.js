@@ -9,7 +9,13 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
     const todoDescription = factory('p', {class: 'description', contentEditable: 'true'}, `${description}`)
     const todoNotes = factory('p', {class: `notes`, contentEditable: 'true'}, `${notes}`)
     const tododueDate = factory('input', {type: 'date', class: `dueDate`, contentEditable: 'true'}, `${dueDate}`)
-    const todoPriority = factory('p', {class: `priority`, contentEditable: 'true'}, `${priority}`)
+    
+    const todoPriority = factory('select', {class: `priority`, contentEditable: 'true'});
+    const highOption = factory('option', {value: 'high'}, 'High Priority');
+    const mediumOption = factory('option', {value: 'medium'}, 'Medium Priority');
+    const lowOption = factory('option', {value: 'low'}, 'Low Priority');
+    
+    todoPriority.append(highOption, mediumOption, lowOption);
     const todoChecked = factory('input', {type: 'checkbox'})
     const todoDelete = factory('button', {class: 'delete'})
     const todoShow = factory('button', {class: 'shownotes'})
@@ -47,10 +53,11 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
             todos[index].dueDate = tododueDate.textContent
         })
     })
-
-    todoPriority.addEventListener('blur', () => {
-        todos[index].priority = todoPriority.textContent
-    })
+    
+    todoPriority.addEventListener('change', () => {
+        const index = todos.findIndex((todo) => todo.title === title);
+        todos[index].priority = todoPriority.value;
+      });
     
    todoList.addEventListener('blur', () => {
         todos[index].list = todoList.textContent
@@ -109,11 +116,9 @@ checkedTodos.forEach(todo => {
   const todoCompletedSelect = document.getElementById(todo.title);
   console.log(todoCompletedSelect)
 
-  if (todoCompletedSelect) {
-    const todoChecked = todoCompletedSelect.querySelector('input[type="checkbox"]');
-    todoChecked.checked = true;
-    todoCompletedSelect.style.opacity = '0.7';
-  }
+  const todoChecked = todoCompletedSelect.querySelector('input[type="checkbox"]');
+  todoChecked.checked = true;
+  todoCompletedSelect.style.opacity = '0.7';
 });
 
 return {title, description, notes, dueDate, priority, list: todoList.textContent};
