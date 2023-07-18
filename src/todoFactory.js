@@ -14,8 +14,9 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
     const highOption = factory('option', {value: 'high'}, 'High Priority');
     const mediumOption = factory('option', {value: 'medium'}, 'Medium Priority');
     const lowOption = factory('option', {value: 'low'}, 'Low Priority');
-    
     todoPriority.append(highOption, mediumOption, lowOption);
+    todoPriority.value = priority;
+
     const todoChecked = factory('input', {type: 'checkbox'})
     const todoDelete = factory('button', {class: 'delete'})
     const todoShow = factory('button', {class: 'shownotes'})
@@ -23,6 +24,7 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
     const buttonContainer = factory('div', {class: 'buttonContainer'});
 
     tododueDate.value = dueDate
+   
 
     todoShow.textContent = 'Show Notes'
     todoDelete.textContent = 'Delete Todo'

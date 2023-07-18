@@ -15,8 +15,8 @@ export const loadList = function () {
                 todo.title,
                 todo.description,
                 todo.notes,
-                todo.priority,
                 todo.dueDate,
+                todo.priority,
                 todo.list,
                 todo.checked
             );
@@ -27,8 +27,8 @@ export const loadList = function () {
                 todo.title,
                 todo.description,
                 todo.notes,
-                todo.priority,
                 todo.dueDate,
+                todo.priority,
                 todo.list,
                 todo.checked
             );
@@ -39,8 +39,8 @@ export const loadList = function () {
                 todo.title,
                 todo.description,
                 todo.notes,
-                todo.priority,
                 todo.dueDate,
+                todo.priority,
                 todo.list
             );
         });

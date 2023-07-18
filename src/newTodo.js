@@ -45,38 +45,37 @@ export const newTodo = () => {
   
 
   function createTodo() {
-    console.log(inputContainer.children)
+    const selectedPriority = todoPriority.options[todoPriority.selectedIndex].value;
+    console.log(selectedPriority)
     addTodo(
       todoTitle.value,
       todoDescription.value,
       todoDue.value,
-      todoPriority.value,
+      selectedPriority,
       todoNotes.value,
       selectedList
     )
-  
+    
     const loadTodo = todoFactory(
       todoTitle.value,
       todoDescription.value,
       todoNotes.value,
       todoDue.value,
-      todoPriority.value,
+      selectedPriority,
       selectedList
     )
+    console.log(todos)
   
-  
+    
     // Clear input fields
-    console.log('Before clearing input fields:', inputContainer.children);
     for (let i = 1; i < inputContainer.children.length; i++) {
       inputContainer.children[i].value = '';
     }
-    console.log('After clearing input fields:', inputContainer.children);
     updateList()
     loadList(selectedList)
   }
 
 
-  console.log(todos)
 
 
 };
