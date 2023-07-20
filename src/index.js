@@ -8,6 +8,7 @@ import { newList } from "./newList"
 import { listNav } from "./listNav"
 import { todos } from "./todoData"
 import { loadList } from "./loadList"
+import { sortingFunc } from "./todoPriority"
 
 
 const content = document.getElementById('content')
