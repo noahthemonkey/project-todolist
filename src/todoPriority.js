@@ -1,5 +1,6 @@
 import { factory } from "./domfactory";
-import { todos, loadList } from "./yourTodoFile"; // replace with your actual file name
+import { todos } from "./todoData";
+import { loadList } from "./loadList";
 
 export const sortingFunc = () => {
     

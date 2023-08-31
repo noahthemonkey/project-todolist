@@ -9,7 +9,7 @@ export const loadList = function () {
     selectedList = this.textContent.replace("Delete", "");
     todoContainer.innerHTML = "";
 
-    if (selectedList === "All Current Todos") {
+    if (selectedList === "All Todos") {
         todos.forEach(todo => {
             todoFactory(
                 todo.title,
@@ -21,16 +21,23 @@ export const loadList = function () {
                 todo.checked
             );
         });
-    } else if (selectedList === "Completed Todos") {
-        todos.filter(todo => todo.checked === true).forEach(todo => {
+    } else if (selectedList === "Done Todos") {
+        const doneTodos = todos.filter(todo => todo.checked === true);
+        if (doneTodos.length >= 2) {
+            console.log(doneTodos[1]); // logs the second done todo
+        } else {
+            console.log("There is no second done todo");
+        }
+        console.log(doneTodos)
+        doneTodos.forEach(todo => {
             todoFactory(
-                todo.title,
-                todo.description,
-                todo.notes,
-                todo.dueDate,
-                todo.priority,
-                todo.list,
-                todo.checked
+                doneTodos.title,
+                doneTodos.description,
+                doneTodos.notes,
+                doneTodos.dueDate,
+                doneTodos.priority,
+                doneTodos.list,
+                doneTodos.checked
             );
         });
     } else if (selectedList) {

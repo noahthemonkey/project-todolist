@@ -1,4 +1,5 @@
 import {factory} from './domfactory.js'
+import { loadList, selectedList } from './loadList.js'
 import { showNotes } from './showNotes.js'
 import { todos } from './todoData.js'
 
@@ -116,11 +117,10 @@ todoContainer.appendChild(todoDiv)
 const checkedTodos = todos.filter(todo => todo.checked);
 checkedTodos.forEach(todo => {
   const todoCompletedSelect = document.getElementById(todo.title);
-  console.log(todoCompletedSelect)
-
-  const todoChecked = todoCompletedSelect.querySelector('input[type="checkbox"]');
-  todoChecked.checked = true;
+  const checkedTodoItem = todoCompletedSelect.querySelector('input[type="checkbox"]');
+  checkedTodoItem.checked = true;
   todoCompletedSelect.style.opacity = '0.7';
+  loadList(selectedList)
 });
 
 return {title, description, notes, dueDate, priority, list: todoList.textContent};

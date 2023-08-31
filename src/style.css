@@ -33,11 +33,11 @@ body {
   order: 2;
   grid-template-columns: 1fr 1fr;
   display: grid;
-  border: 5px solid #6db970; /* Green frog border */
   background-color: #cbffd8; /* Light green background */
   border-radius: 10px; /* Rounded corners */
   padding: 10px; /* Space between border and content */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 1vh;
+  box-shadow: 8px 8px  #ffffff68; /* Subtle shadow for depth */
 }
 
 
@@ -78,6 +78,7 @@ h1 {
   transition: all 0.3s ease;
   padding: 4%;
   height: 20vh; /* set a fixed height */
+  box-shadow: 8px 8px  #ffffff68; /* Subtle shadow for depth */
 }
 
 
@@ -179,15 +180,21 @@ input::placeholder {
 
 button {
   font-family: 'Press Start 2P', cursive;
+  text-shadow: 1px 1px black;
   border-radius: 10px;
-  background-color: #d19cc6;
+  background-color: #61ac648a;
   color: white;
   cursor: pointer;
-  width: 200px;
+  width: 15vh;
   border: none;
   text-align: left;
   outline: none;
   font-size: 15px;
+  transition: background-color 0.5s ease; /* Add transition effect */
+}
+
+button:hover {
+  background-color: #91f58db1; /* Darker green on hover */
 }
 
 #lists {

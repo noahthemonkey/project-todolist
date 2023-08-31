@@ -14,10 +14,10 @@ export const listNav = (todos) => {
 
 
     const allTodos = factory("li", { id: 'AllTodos' });
-    allTodos.textContent = "All Current Todos";
+    allTodos.textContent = "All Todos";
 
     const completedTodos = factory("li", { id: 'CompletedTodos' });
-    completedTodos.textContent = "Completed Todos";
+    completedTodos.textContent = "Done Todos";
         completedTodos.onclick = loadList
 
     const listsMap = todos.reduce((listsMap, todo) => {
