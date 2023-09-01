@@ -1,5 +1,6 @@
 import { updateList } from "./newTodo";
 import { getTodos, addTodo, todo, todos } from "./todoData";
+import { sortingFunc } from "./todoPriority";
 import { todoFactory } from "./todoFactory";
 export let selectedList = "All Current Todos"
 
@@ -31,13 +32,13 @@ export const loadList = function () {
         console.log(doneTodos)
         doneTodos.forEach(todo => {
             todoFactory(
-                doneTodos.title,
-                doneTodos.description,
-                doneTodos.notes,
-                doneTodos.dueDate,
-                doneTodos.priority,
-                doneTodos.list,
-                doneTodos.checked
+                todo.title,
+                todo.description,
+                todo.notes,
+                todo.dueDate,
+                todo.priority,
+                todo.list,
+                todo.checked
             );
         });
     } else if (selectedList) {
@@ -53,6 +54,7 @@ export const loadList = function () {
         });
     }
     
+    sortingFunc(selectedList); // Add this line to call the sorting function
 
     return selectedList
 };
