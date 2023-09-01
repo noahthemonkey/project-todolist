@@ -2,7 +2,8 @@ import { updateList } from "./newTodo";
 import { getTodos, addTodo, todo, todos } from "./todoData";
 import { sortingFunc } from "./todoPriority";
 import { todoFactory } from "./todoFactory";
-export let selectedList = "All Current Todos"
+
+export let selectedList = "All Todos"
 
 export const loadList = function () {
     setSelect(this)
@@ -53,8 +54,6 @@ export const loadList = function () {
             );
         });
     }
-    
-    sortingFunc(selectedList); // Add this line to call the sorting function
 
     return selectedList
 };
