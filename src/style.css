@@ -1,9 +1,10 @@
 html,
 body,
-#content, #wrapper{
+#content,
+#wrapper {
   height: 100%;
   width: 100%;
-  
+
 }
 
 body {
@@ -33,11 +34,24 @@ body {
   order: 2;
   grid-template-columns: 1fr 1fr;
   display: grid;
-  background-color: #cbffd8; /* Light green background */
-  border-radius: 10px; /* Rounded corners */
-  padding: 10px; /* Space between border and content */
+  background-color: #cbffd8;
+  /* Light green background */
+  border-radius: 10px;
+  /* Rounded corners */
+  padding: 10px;
+  /* Space between border and content */
   margin: 1vh;
-  box-shadow: 8px 8px  #ffffff68; /* Subtle shadow for depth */
+  box-shadow: 8px 8px #ffffff68;
+  /* Subtle shadow for depth */
+  gap: 10px;
+  width: 100%;
+}
+
+#sortDiv > button {
+width: 100%;
+padding: 10px;
+text-align: center;
+gap: 10px;
 }
 
 
@@ -47,42 +61,48 @@ body {
   animation: hueShift 3s alternate infinite;
 
 }
+
 @keyframes hueShift {
   0% {
     background-position: 50% 2%;
   }
+
   50% {
     background-position: 50% 100%;
   }
+
   100% {
     background-position: 50% 0%;
   }
 }
 
 #wrapper {
-height: 100%;
+  height: 100%;
 }
 
 h1 {
   font-size: 22px;
-}  
+}
 
 
 #todoContainer>div {
   display: grid;
-  width: 90%;
+  grid-template-columns: 175px 3fr;
+  width: 100%;
   border: 2px solid #6bda7e;
   border-radius: 10px;
   background: linear-gradient(135deg, #8cdfa5, #82f391);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   padding: 4%;
-  height: 20vh; /* set a fixed height */
-  box-shadow: 8px 8px  #ffffff68; /* Subtle shadow for depth */
+  height: 30vh;
+  /* set a fixed height */
+  box-shadow: 8px 8px #ffffff68;
+  /* Subtle shadow for depth */
 }
-
-
-
+#todoContainer>div>p{
+  grid-column: 1 / 3;
+}
 
 
 #todoContainer {
@@ -96,8 +116,10 @@ h1 {
 
 
 #todoContainer>div:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  transform: translateY(-5px);
+  /* Slight lift on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  /* Increased shadow on hover */
 }
 
 .buttonContainer {
@@ -110,22 +132,32 @@ h1 {
 
 
 .delete {
-  background-color: #ff4d4d; /* Red background color */
-  color: white; /* White font color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 5px 10px; /* Padding around the text */
-  cursor: pointer; /* Change cursor to pointer when hovering */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  background-color: #ff4d4d;
+  /* Red background color */
+  color: white;
+  /* White font color */
+  border: none;
+  /* Remove border */
+  border-radius: 5px;
+  /* Rounded corners */
+  padding: 5px 10px;
+  /* Padding around the text */
+  cursor: pointer;
+  /* Change cursor to pointer when hovering */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for hover effect */
 }
 
 .delete:hover {
-  background-color: #b40000; /* Darker red background color on hover */
+  background-color: #b40000;
+  /* Darker red background color on hover */
 }
 
 
 
 [id*="todoTitle"] {
+  text-align: center;
+  grid-column: 1 / 3;
   font-size: 1em;
   font-weight: bold;
   color: rgb(0, 0, 0);
@@ -150,8 +182,10 @@ h1 {
 
 .shownotes {
   background-color: #adcaa4;
-  border-radius: 5px; /* Rounded corners */
-  padding: 5px 10px; /* Padding around the text */
+  border-radius: 5px;
+  /* Rounded corners */
+  padding: 5px 10px;
+  /* Padding around the text */
 }
 
 .shownotes:hover {
@@ -159,9 +193,11 @@ h1 {
 }
 
 .notes {
-  display: none;
-  overflow-y: auto; /* Enable scrolling when content exceeds the fixed height */
-  height: 50px; /* Set a fixed height for the notes */
+  display: hidden;
+  overflow-y: auto;
+  /* Enable scrolling when content exceeds the fixed height */
+  height: 50px;
+  /* Set a fixed height for the notes */
   transition: max-height 2s ease-in-out;
 }
 
@@ -190,11 +226,13 @@ button {
   text-align: left;
   outline: none;
   font-size: 15px;
-  transition: background-color 0.5s ease; /* Add transition effect */
+  transition: background-color 0.5s ease;
+  /* Add transition effect */
 }
 
 button:hover {
-  background-color: #91f58db1; /* Darker green on hover */
+  background-color: #91f58db1;
+  /* Darker green on hover */
 }
 
 #lists {
@@ -211,6 +249,7 @@ button:hover {
   margin: 3vh;
   gap: 3%;
 }
+
 #listsh1 {
   order: -2;
 }
@@ -227,7 +266,8 @@ button:hover {
   height: 100%;
 }
 
-#AllTodos, #CompletedTodos{
+#AllTodos,
+#CompletedTodos {
   background-color: #e1eedd;
 }
 
@@ -245,14 +285,18 @@ button:hover {
   font-size: 0.8em;
   border-radius: 5px;
   box-shadow: 2px 1px 1px 1px rgb(255, 255, 255);
-  transition: all 0.3s ease; /* Add transition to normal state */
+  transition: all 0.3s ease;
+  /* Add transition to normal state */
 }
 
 #lists>ul>li:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  transform: translateY(-5px);
+  /* Slight lift on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  /* Increased shadow on hover */
   background-color: #fff59b;
 }
+
 #lists>ul>li>button {
   position: absolute;
   top: 5px;
@@ -294,10 +338,12 @@ button:hover {
   grid-template-rows: repeat(7, 0.1fr);
   gap: 5px;
 }
+
 .add-list-form {
   display: grid;
   grid-template-rows: 0.1fr 0.2fr 0.2fr;
 }
+
 #inputContainer button,
 .add-list-form button {
   background-color: #6bda7e;
@@ -315,6 +361,7 @@ button:hover {
 }
 
 input[type="date"] {
+  text-align: center;
   font-family: 'Press Start 2P', cursive;
   appearance: none;
   box-sizing: border-box;
@@ -322,6 +369,9 @@ input[type="date"] {
   background: transparent;
   font-size: 0.7rem;
   padding: 8px;
+  width: 100%;
+  border-radius: 9px;
+
 
   ::-webkit-datetime-edit-text {
     padding: 0 2rem;
@@ -359,10 +409,12 @@ h1 {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-3px);
     text-shadow: 2px 2px 2px #36a047;
   }
+
   100% {
     transform: translateY(0);
   }
@@ -375,11 +427,13 @@ body,
 }
 
 input[type="checkbox"] {
+  grid-column: 1 / 3;
   position: relative;
   appearance: none;
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
+  
   border: 2px solid #64a16f;
   outline: none;
   background-color: #b8e6aa;
@@ -408,4 +462,42 @@ input[type="checkbox"]:checked::before {
   opacity: 1;
 }
 
+select {
+  appearance: none;
+  text-align: center;
+  background-color: #b8e6aa;
+  border: 2px solid black;
+  justify-content: center;
+  padding: 5px;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7em;
+  color: #000;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9px;
 
+}
+
+select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #fff;
+}
+
+select option {
+  background-color: #b8e6aa;
+  color: #000;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+}
+
+select option:checked {
+  background-color: #64a16f;
+  color: #fff;
+}

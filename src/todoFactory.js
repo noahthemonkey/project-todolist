@@ -1,6 +1,8 @@
 import { factory } from './domfactory.js'
+import { loadList, selectedList } from './loadList.js'
 import { showNotes } from './showNotes.js'
 import { todos } from './todoData.js'
+import { sortingFunc } from './todoPriority.js'
 
 export const todoFactory = (title, description, notes, dueDate, priority, list) => {
   const todoContainer = document.getElementById('todoContainer')
@@ -59,6 +61,7 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
   todoPriority.addEventListener('change', () => {
     const index = todos.findIndex((todo) => todo.title === title);
     todos[index].priority = todoPriority.value;
+    sortingFunc()
   });
 
   todoList.addEventListener('blur', () => {
@@ -89,21 +92,21 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
 
     if (todoChecked.checked == true) {
       todos[index].checked = true;
-      this.parentNode.parentNode.style.opacity = '0.7'; // set opacity to 50%
+      this.parentNode.style.opacity = '0.7'; // set opacity to 50%
       console.log('checked bitch')
     } else {
       todos[index].checked = false;
       console.log('unchekckckerd')
 
-      this.parentNode.parentNode.style.opacity = '1'; // set opacity back to 100%
+      this.parentNode.style.opacity = '1'; // set opacity back to 100%
     }
     console.log(todos)
   }
 
 
   todos[index].value = todoDue.value
-  buttonContainer.append(todoChecked, todoShow, todoDelete);
-  todoDiv.append(todoTitle, todoDescription, todoNotes, tododueDate, todoPriority, buttonContainer);
+  buttonContainer.append(todoShow, todoDelete);
+  todoDiv.append(todoChecked, todoTitle, todoDescription, todoNotes, tododueDate, todoPriority, buttonContainer);
   todoContainer.appendChild(todoDiv)
 
 

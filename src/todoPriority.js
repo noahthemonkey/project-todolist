@@ -16,12 +16,12 @@ let sortOrder = 'highToLow'; // Default sort order
 
 export const sortingFunc = () => {
     if (sortOrder === 'highToLow') {
-      todos.sort((a, b) => {
+      todos.sort((b, a) => {
         const priorityOrder = ['high', 'medium', 'low'];
         return priorityOrder.indexOf(b.priority) - priorityOrder.indexOf(a.priority);
       });
     } else if (sortOrder === 'lowToHigh') {
-      todos.sort((b, a) => {
+      todos.sort((a, b) => {
         const priorityOrder = ['low', 'medium', 'high'];
         return priorityOrder.indexOf(a.priority) - priorityOrder.indexOf(b.priority);
       });

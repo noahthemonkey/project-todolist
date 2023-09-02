@@ -11,9 +11,9 @@ export const showNotes = () => {
       const selectedNote = this.parentElement.classList
       selectedNote.toggle('active')
     
-      var thisNotes = this.parentElement.parentElement.children.item(2);
+      var thisNotes = this.parentElement.parentElement.children.item(3);
       if (thisNotes.style.display === "block") {
-        thisNotes.style.display = "none";
+        thisNotes.style.display = "hidden";
         thisNotes.style.maxHeight = "0";
         console.log('close')
       } else {
