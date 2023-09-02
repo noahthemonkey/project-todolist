@@ -27,16 +27,18 @@ export const sortingFunc = () => {
       });
     }
     console.table(todos);
-    console.log(todos);
-    loadList(selectedList)
+    console.log(selectedList);
+    loadList()
   };
 
 sortHighButton.addEventListener('click', () => {
   sortOrder = 'highToLow';
   sortingFunc();
+
 });
 
 sortLowButton.addEventListener('click', () => {
   sortOrder = 'lowToHigh';
   sortingFunc();
+
 });

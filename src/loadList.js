@@ -8,10 +8,17 @@ export let selectedList = "All Todos"
 export const loadList = function () {
     setSelect(this)
 
-    selectedList = this.textContent.replace("Delete", "");
+    const selectedListItem = document.querySelector(".selected");
+    if (selectedListItem) {
+        selectedList = selectedListItem.textContent.replace("Delete", "").trim();
+    } else {
+        selectedList = "All Todos";
+    }
+    console.log(selectedList)
     todoContainer.innerHTML = "";
 
     if (selectedList === "All Todos") {
+        console.table(todos)
         todos.forEach(todo => {
             todoFactory(
                 todo.title,
@@ -25,12 +32,8 @@ export const loadList = function () {
         });
     } else if (selectedList === "Done Todos") {
         const doneTodos = todos.filter(todo => todo.checked === true);
-        if (doneTodos.length >= 2) {
-            console.log(doneTodos[1]); // logs the second done todo
-        } else {
-            console.log("There is no second done todo");
-        }
         console.log(doneTodos)
+
         doneTodos.forEach(todo => {
             todoFactory(
                 todo.title,
@@ -43,6 +46,7 @@ export const loadList = function () {
             );
         });
     } else if (selectedList) {
+
         getTodos(selectedList).forEach(todo => {
             todoFactory(
                 todo.title,
@@ -55,7 +59,7 @@ export const loadList = function () {
         });
     }
 
-    return selectedList
+    
 };
 
 
