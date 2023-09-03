@@ -6,6 +6,12 @@ import { todoFactory } from "./todoFactory";
 export let selectedList = "All Todos"
 
 export const loadList = function () {
+    todoContainer.style.opacity = 0;
+    todoContainer.classList.remove('fade-in');
+    todoContainer.style.transition = "none";
+
+
+
     setSelect(this)
 
     const selectedListItem = document.querySelector(".selected");
@@ -15,6 +21,9 @@ export const loadList = function () {
         selectedList = "All Todos";
     }
     console.log(selectedList)
+
+    // Add CSS styles using template literals
+
     todoContainer.innerHTML = "";
 
     if (selectedList === "All Todos") {
@@ -59,10 +68,12 @@ export const loadList = function () {
         });
     }
 
-    
+    // Add a delay before applying the fade-in effect
+    setTimeout(() => {
+        todoContainer.style.transition = "opacity 0.15s ease-in";
+        todoContainer.style.opacity = 1;
+    }, 100);
 };
-
-
 
 export const setSelect = el => {
     console.log(el); // add this line
