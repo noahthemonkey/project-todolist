@@ -1,6 +1,6 @@
 import { listNav } from "./listNav";
 
-export const todos = [
+export const todos = JSON.parse(localStorage.getItem('todos')) || [
   {
     id: 1,
     title: "Buy Groceries",
@@ -54,6 +54,11 @@ export const todos = [
 ];
 
 
+// Save todos to local storage
+const saveTodosToLocalStorage = () => {
+  localStorage.setItem('todos', JSON.stringify(todos));
+};
+
 
 export const getTodos = (listName) => {
   return todos.filter((todo) => todo.list === listName);
@@ -70,6 +75,7 @@ export const addTodo = (title, description, notes, priority, dueDate, list) => {
     dueDate,
     list
   });
+  saveTodosToLocalStorage(); // Save todos after adding a new one
 };
 
 export const allLists = () => {
@@ -80,3 +86,39 @@ export const allLists = () => {
   console.log(currentLists)
   return currentLists;
 }
+
+
+
+export const lists = JSON.parse(localStorage.getItem('lists')) || [
+  "General",
+  "Work",
+  "Health",
+  "Finance"
+];
+
+const saveListsToLocalStorage = () => {
+  localStorage.setItem('lists', JSON.stringify(lists));
+};
+
+export const addList = (listName) => {
+  lists.push(listName);
+  saveListsToLocalStorage();
+};
+
+export const deleteList = (listName) => {
+  const index = lists.indexOf(listName);
+  if (index > -1) {
+    lists.splice(index, 1);
+    saveListsToLocalStorage();
+  }
+};
+
+export const getAllLists = () => {
+  return lists;
+};
+
+// Rest of your code...
+
+window.addEventListener('beforeunload', saveListsToLocalStorage);
+
+window.addEventListener('beforeunload', saveTodosToLocalStorage);

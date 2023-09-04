@@ -93,11 +93,8 @@ export const todoFactory = (title, description, notes, dueDate, priority, list) 
     if (todoChecked.checked == true) {
       todos[index].checked = true;
       this.parentNode.style.opacity = '0.7'; // set opacity to 50%
-      console.log('checked bitch')
     } else {
       todos[index].checked = false;
-      console.log('unchekckckerd')
-
       this.parentNode.style.opacity = '1'; // set opacity back to 100%
     }
     console.log(todos)

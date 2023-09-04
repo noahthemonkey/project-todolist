@@ -1,8 +1,9 @@
-import { getTodos, todos, addTodo, getAllLists } from "./todoData.js";
+import { getTodos, todos, addTodo, getAllLists, deleteList, addList } from "./todoData.js";
 import { factory } from "./domfactory";
 import { todoFactory } from "./todoFactory"
 import { loadList, selectedList, setSelect, } from "./loadList.js";
 import { updateList } from "./newTodo.js";
+
 
 export const listNav = (todos) => {
     const todoContainer = document.getElementById("todoContainer");
@@ -18,7 +19,7 @@ export const listNav = (todos) => {
 
     const completedTodos = factory("li", { id: 'CompletedTodos' });
     completedTodos.textContent = "Done Todos";
-        completedTodos.onclick = loadList
+    completedTodos.onclick = loadList
 
     const listsMap = todos.reduce((listsMap, todo) => {
         if (!listsMap[todo.list]) {
@@ -36,7 +37,7 @@ export const listNav = (todos) => {
     });
 
     allTodos.onclick = loadList;
-    
+
     const listItems = Array.from(listsContainer.querySelectorAll("li"));
     listItems.forEach(listItem => {
         listItem.onclick = loadList;
@@ -58,48 +59,75 @@ export const listNav = (todos) => {
     submitBtn.classList.add("create-list-btn");
 
     addListForm.append(listsTitle, inputField, submitBtn);
-    lists.append(listsContainer, addListForm, );
-    
+    lists.append(listsContainer, addListForm,);
+
+    // Inside your "submitBtn" event listener
     submitBtn.addEventListener("click", event => {
         event.preventDefault();
         if (!inputField.value) return;
-        
-        const newList = factory("li", {});
-        newList.textContent = inputField.value;
-        addDeleteButton(newList);
-                newList.onclick = loadList;
 
-        listsContainer.append(newList);
-        console.log(newList.textContent)
-        
-        inputField.value = "";
-        updateList()
+        const newListName = inputField.value;
 
+        // Check if the list name already exists
+        if (!savedLists.includes(newListName)) {
+            addList(newListName); // Add the new list to your lists array
+
+            const newList = factory("li", {});
+            newList.textContent = newListName;
+            addDeleteButton(newList);
+            newList.onclick = loadList;
+            listsContainer.append(newList);
+
+            inputField.value = "";
+            updateList();
+        } else {
+            // Handle the case where the list name already exists
+            // You can show an error message or take appropriate action
+            console.log("List name already exists!");
+        }
     });
+
+
+    // Clear the listsContainer
+    listsContainer.innerHTML = '';
+
+
+    const savedLists = getAllLists();
+    savedLists.forEach(listName => {
+        const listItem = factory("li", {});
+        listItem.textContent = listName;
+        addDeleteButton(listItem);
+        listItem.onclick = loadList;
+        listsContainer.append(listItem);
+    });
+
+
 
     function addDeleteButton(listItem) {
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "";
         listItem.append(deleteButton);
         deleteButton.addEventListener("click", () => {
-            const listName = listItem.textContent.replace('Delete', '');
-            console.log(listName)
-            const todosFound = todos.filter(todoListNames => todoListNames.list == listName);
+            const listName = listItem.textContent;
+            const todosFound = todos.filter(todo => todo.list === listName);
 
             todosFound.forEach(todo => {
                 const index = todos.indexOf(todo);
                 todos.splice(index, 1);
-              });
-              console.log(listItem)
-              listItem.parentNode.removeChild(listItem)
-              loadList.call(document.querySelector('#AllTodos'))
-            console.log(todosFound)
+            });
+
+            listItem.parentNode.removeChild(listItem);
             updateList();
+
+            // Remove the list from your lists array and localStorage
+            deleteList(listName);
+
+            loadList.call(document.querySelector('#AllTodos'));
         });
     }
     const listsh1 = document.createElement('h1')
     listsh1.setAttribute('ID', 'listsh1')
-    listsh1.textContent = 'Todo Lists'
+    listsh1.textContent = 'Active Todo Lists'
 
     lists.appendChild(listsh1)
     listsContainer.append(allTodos, completedTodos)
